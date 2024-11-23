@@ -440,4 +440,20 @@ if (clarity_on) {
       });
     });
   }
-  
+  // Пустая функция, которая ни к чему не относится
+function myFunction() {
+    console.log("Вызвана функция myFunction");
+}
+
+// Функция высшего порядка, которая принимает имя функции и вызывает её
+function executeFunctionByName(functionName) {
+    if (typeof window[functionName] === 'function') {
+        window[functionName]();
+    } else {
+        console.error(`Функция ${functionName} не найдена`);
+    }
+}
+
+// Пример использования
+let functionName = "myFunction";
+executeFunctionByName(functionName);
