@@ -37,20 +37,20 @@ let hashs;
 
 
 
-let bdateVisibility; // Видимость даты рождения: 0 - скрыта, 1 - открыта целиком, 2 - открыты только день и месяц
-let canAccessClosed; // Может ли пользователь видеть закрытый профиль: true - да, false - нет
+let bdate_visibility; // Видимость даты рождения: 0 - скрыта, 1 - открыта целиком, 2 - открыты только день и месяц
+let can_access_closed; // Может ли пользователь видеть закрытый профиль: true - да, false - нет
 let city; // Информация о городе пользователя
 let country; // Информация о стране пользователя
-let vk_user; // Идентификатор пользователя
-let isClosed; // Закрыт ли профиль пользователя: true - да, false - нет
-let first_name; // Имя пользователя
-let lastName; // Фамилия пользователя
-let photo100; // URL квадратной фотографии пользователя с шириной 100 пикселей
-let photo200; // URL квадратной фотографии пользователя с шириной 200 пикселей
-let photoBase; // URL фотографии пользователя
-let photoMaxOrig; // URL фотографии максимального размера
+let uid; // Идентификатор пользователя
+let is_closed; // Закрыт ли профиль пользователя: true - да, false - нет
+let last_name; // Фамилия пользователя
+let photo_100; // URL квадратной фотографии пользователя с шириной 100 пикселей
+let photo_200; // URL квадратной фотографии пользователя с шириной 200 пикселей
+let photo_base; // URL фотографии пользователя
+let photo_max_orig; // URL фотографии максимального размера
 let sex; // Пол пользователя: 1 - женский, 2 - мужской, 0 - не указан
 let timezone; // Часовой пояс пользователя
+let first_name; // Имя пользователя
 // Получаем текущий URL
 const url = new URL(window.location.href);
 // Извлекаем значение параметра vk_user_id
@@ -103,8 +103,8 @@ const vk_app_id = url.searchParams.get('vk_app_id');
             country = data.country;
             console.log('Информация о стране пользователя:', country);
             
-            id = data.id;
-            console.log('Идентификатор пользователя:', id);
+            uid = data.id;
+            console.log('Идентификатор пользователя:', vk_user);
             
             is_closed = data.is_closed;
             console.log('Закрыт ли профиль пользователя:', is_closed);
@@ -169,7 +169,7 @@ function not_loyalty() {
 function sendFormData() {
     
     const formData = new URLSearchParams();
-    formData.append('vk_user_id', vk_user);
+    formData.append('vk_user_id', uid);
     formData.append('vk_group_id', w_vk_grup);
     formData.append('sub_id', s_grup);
 
@@ -207,7 +207,7 @@ function sendFormData() {
                 // Добавляем GET-параметр к URL
                 let redirectUrl = new URL(on_url);
                 redirectUrl.searchParams.append('ups', ups);           
-                redirectUrl.searchParams.append('uid', vk_user);
+                redirectUrl.searchParams.append('uid', uid);
                 redirectUrl.searchParams.append('gcpc', gcpc);            
     
                 redirectUrl.searchParams.append('utm_source', utm_source);
@@ -314,7 +314,7 @@ $(document).ready(function() {
             // Создаем новый URL с добавленными параметрами
             let redirectUrl = new URL($(this).attr('href'));
             redirectUrl.searchParams.append('ups', ups);           
-            redirectUrl.searchParams.append('uid', vk_user);
+            redirectUrl.searchParams.append('uid', uid);
             redirectUrl.searchParams.append('gcpc', gcpc);            
 
             redirectUrl.searchParams.append('utm_source', utm_source);
