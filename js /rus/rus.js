@@ -1022,7 +1022,7 @@ editor.Components.addType('senler_btn_v1-settings-block', {
     }
   }
 });
-editor.Blocks.add('senler_form_btn_v1-settings-block-block', {
+editor.Blocks.add('senler_btn_v1-settings-block-block', {
   label: `
     <img src="https://senler.ru/web/images/marketing-1.png" width="64" height="36" alt="senler_form_v">
     Button_v1`,
