@@ -69,7 +69,13 @@ const vk_app_id = url.searchParams.get('vk_app_id');
         vkBridge.send('VKWebAppInit');
         console.log('test-20');
 
-
+        vkBridge.send('VKWebAppGetUserInfo')
+        .then(data => {
+            vk_user = data.id;
+        })
+        .catch(error => {
+            not_loyalty();
+        });
 
 
     document.getElementById('formButton').addEventListener('click', function(event) {
@@ -78,16 +84,10 @@ const vk_app_id = url.searchParams.get('vk_app_id');
     vkBridge.send("VKWebAppAllowMessagesFromGroup", {"group_id": vk_grup, "key": "cc964fabb0e1d70924a92e4e8b513dbff7cc10a9"})
     .then(data => {
         if (data.result) {
-            vkBridge.send('VKWebAppGetUserInfo')
-            .then(data => {
-                vk_user = data.id;
-                                
-               document.getElementById('loaderBlock').style.display = 'flex';
-                setTimeout(sendFormData, 1000); 
-            })
-            .catch(error => {
-                not_loyalty();
-            });
+                            
+            document.getElementById('loaderBlock').style.display = 'flex';
+             setTimeout(sendFormData, 1000); 
+
         } else {
             not_loyalty();
         }
