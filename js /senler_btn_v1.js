@@ -80,6 +80,7 @@ const vk_app_id = url.searchParams.get('vk_app_id');
 
 
 
+let startFuncName = "myFunction";
     
 
         vkBridge.send('VKWebAppInit');
@@ -132,6 +133,12 @@ const vk_app_id = url.searchParams.get('vk_app_id');
             
             first_name = data.first_name;
             console.log('Имя пользователя:', first_name);
+
+
+           // Пример использования
+           startteFunctionByName(startFuncName);
+
+
         })
         .catch(error => {
             console.error('Ошибка при получении информации о пользователе:', error);
@@ -440,20 +447,26 @@ if (clarity_on) {
       });
     });
   }
+
+
+
+
+
   // Пустая функция, которая ни к чему не относится
 function myFunction() {
     console.log("Вызвана функция myFunction");
 }
 
+
+
+
 // Функция высшего порядка, которая принимает имя функции и вызывает её
-function executeFunctionByName(functionName) {
-    if (typeof window[functionName] === 'function') {
-        window[functionName]();
+function startteFunctionByName(startFuncName) {
+    if (typeof window[startFuncName] === 'function') {
+        window[startFuncName]();
     } else {
-        console.error(`Функция ${functionName} не найдена`);
+        console.error(`Функция ${startFuncName} не найдена`);
     }
 }
 
-// Пример использования
-let functionName = "myFunction";
-executeFunctionByName(functionName);
+
