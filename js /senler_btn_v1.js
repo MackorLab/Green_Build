@@ -34,7 +34,23 @@ let utm_content;
 let utm_term;
 
 let hashs;
-let vk_user;
+
+
+
+let bdateVisibility; // Видимость даты рождения: 0 - скрыта, 1 - открыта целиком, 2 - открыты только день и месяц
+let canAccessClosed; // Может ли пользователь видеть закрытый профиль: true - да, false - нет
+let city; // Информация о городе пользователя
+let country; // Информация о стране пользователя
+let vk_user; // Идентификатор пользователя
+let isClosed; // Закрыт ли профиль пользователя: true - да, false - нет
+let first_name; // Имя пользователя
+let lastName; // Фамилия пользователя
+let photo100; // URL квадратной фотографии пользователя с шириной 100 пикселей
+let photo200; // URL квадратной фотографии пользователя с шириной 200 пикселей
+let photoBase; // URL фотографии пользователя
+let photoMaxOrig; // URL фотографии максимального размера
+let sex; // Пол пользователя: 1 - женский, 2 - мужской, 0 - не указан
+let timezone; // Часовой пояс пользователя
 // Получаем текущий URL
 const url = new URL(window.location.href);
 // Извлекаем значение параметра vk_user_id
@@ -67,17 +83,61 @@ const vk_app_id = url.searchParams.get('vk_app_id');
     
 
         vkBridge.send('VKWebAppInit');
-        console.log('test-20');
+        
+
+
+        
 
         vkBridge.send('VKWebAppGetUserInfo')
         .then(data => {
             console.log(data);
-            vk_user = data.id;
+            
+            bdate_visibility = data.bdate_visibility;
+            console.log('Видимость даты рождения:', bdate_visibility);
+            
+            can_access_closed = data.can_access_closed;
+            console.log('Может ли пользователь видеть закрытый профиль:', can_access_closed);
+            
+            city = data.city;
+            console.log('Информация о городе пользователя:', city);
+            
+            country = data.country;
+            console.log('Информация о стране пользователя:', country);
+            
+            id = data.id;
+            console.log('Идентификатор пользователя:', id);
+            
+            is_closed = data.is_closed;
+            console.log('Закрыт ли профиль пользователя:', is_closed);
+            
+            last_name = data.last_name;
+            console.log('Фамилия пользователя:', last_name);
+            
+            photo_100 = data.photo_100;
+            console.log('URL квадратной фотографии пользователя с шириной 100 пикселей:', photo_100);
+            
+            photo_200 = data.photo_200;
+            console.log('URL квадратной фотографии пользователя с шириной 200 пикселей:', photo_200);
+            
+            photo_base = data.photo_base;
+            console.log('URL фотографии пользователя:', photo_base);
+            
+            photo_max_orig = data.photo_max_orig;
+            console.log('URL фотографии максимального размера:', photo_max_orig);
+            
+            sex = data.sex;
+            console.log('Пол пользователя:', sex);
+            
+            timezone = data.timezone;
+            console.log('Часовой пояс пользователя:', timezone);
+            
+            first_name = data.first_name;
+            console.log('Имя пользователя:', first_name);
         })
         .catch(error => {
+            console.error('Ошибка при получении информации о пользователе:', error);
             not_loyalty();
         });
-
 
     document.getElementById('formButton').addEventListener('click', function(event) {
     event.preventDefault(); 
