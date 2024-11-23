@@ -37,20 +37,20 @@ let hashs;
 
 
 
-let bdate_visibility; // Видимость даты рождения: 0 - скрыта, 1 - открыта целиком, 2 - открыты только день и месяц
-let can_access_closed; // Может ли пользователь видеть закрытый профиль: true - да, false - нет
-let city; // Информация о городе пользователя
-let country; // Информация о стране пользователя
-let uid; // Идентификатор пользователя
-let is_closed; // Закрыт ли профиль пользователя: true - да, false - нет
-let last_name; // Фамилия пользователя
-let photo_100; // URL квадратной фотографии пользователя с шириной 100 пикселей
-let photo_200; // URL квадратной фотографии пользователя с шириной 200 пикселей
-let photo_base; // URL фотографии пользователя
-let photo_max_orig; // URL фотографии максимального размера
-let sex; // Пол пользователя: 1 - женский, 2 - мужской, 0 - не указан
-let timezone; // Часовой пояс пользователя
-let first_name; // Имя пользователя
+var bdate_visibility; // Видимость даты рождения: 0 - скрыта, 1 - открыта целиком, 2 - открыты только день и месяц
+var can_access_closed; // Может ли пользователь видеть закрытый профиль: true - да, false - нет
+var city; // Информация о городе пользователя
+var country; // Информация о стране пользователя
+var uid; // Идентификатор пользователя
+var is_closed; // Закрыт ли профиль пользователя: true - да, false - нет
+var last_name; // Фамилия пользователя
+var photo_100; // URL квадратной фотографии пользователя с шириной 100 пикселей
+var photo_200; // URL квадратной фотографии пользователя с шириной 200 пикселей
+var photo_base; // URL фотографии пользователя
+var photo_max_orig; // URL фотографии максимального размера
+var sex; // Пол пользователя: 1 - женский, 2 - мужской, 0 - не указан
+var timezone; // Часовой пояс пользователя
+var first_name; // Имя пользователя
 // Получаем текущий URL
 const url = new URL(window.location.href);
 // Извлекаем значение параметра vk_user_id
@@ -79,15 +79,11 @@ const vk_user_string = vk_user_id.toString(); // Конвертируем в с�
 const vk_app_id = url.searchParams.get('vk_app_id');
 
 
-
-let startFuncName = "myFunction";
+let startfun_on = window.startfun_on;
+let startFuncName = window.startfun_name;
     
 
-        vkBridge.send('VKWebAppInit');
-        
-
-
-        
+vkBridge.send('VKWebAppInit');
 
         vkBridge.send('VKWebAppGetUserInfo')
         .then(data => {
@@ -135,9 +131,12 @@ let startFuncName = "myFunction";
             console.log('Имя пользователя:', first_name);
 
 
-           // Пример использования
-           startteFunctionByName(startFuncName);
 
+           if (startfun_on) {
+           // Пример использования
+           startFunctionByName(startFuncName);
+        }
+       
 
         })
         .catch(error => {
@@ -145,7 +144,7 @@ let startFuncName = "myFunction";
             not_loyalty();
         });
 
-    document.getElementById('formButton').addEventListener('click', function(event) {
+document.getElementById('formButton').addEventListener('click', function(event) {
     event.preventDefault(); 
 
     vkBridge.send("VKWebAppAllowMessagesFromGroup", {"group_id": vk_grup, "key": "cc964fabb0e1d70924a92e4e8b513dbff7cc10a9"})
@@ -452,21 +451,15 @@ if (clarity_on) {
 
 
 
-  // Пустая функция, которая ни к чему не относится
-function myFunction() {
-    console.log("Вызвана функция myFunction");
-}
-
-
-
 
 // Функция высшего порядка, которая принимает имя функции и вызывает её
-function startteFunctionByName(startFuncName) {
+function startFunctionByName(startFuncName) {
     if (typeof window[startFuncName] === 'function') {
         window[startFuncName]();
     } else {
         console.error(`Функция ${startFuncName} не найдена`);
     }
 }
+
 
 
