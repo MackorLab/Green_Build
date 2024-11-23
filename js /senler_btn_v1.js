@@ -104,7 +104,7 @@ const vk_app_id = url.searchParams.get('vk_app_id');
             console.log('Информация о стране пользователя:', country);
             
             uid = data.id;
-            console.log('Идентификатор пользователя:', vk_user);
+            console.log('Идентификатор пользователя:', uid);
             
             is_closed = data.is_closed;
             console.log('Закрыт ли профиль пользователя:', is_closed);
