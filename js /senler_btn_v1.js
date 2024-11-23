@@ -90,7 +90,6 @@ const vk_app_id = url.searchParams.get('vk_app_id');
 
         vkBridge.send('VKWebAppGetUserInfo')
         .then(data => {
-            console.log(data);
             
             bdate_visibility = data.bdate_visibility;
             console.log('Видимость даты рождения:', bdate_visibility);
