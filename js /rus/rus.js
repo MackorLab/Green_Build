@@ -917,8 +917,6 @@ editor.Components.addType('senler_btn_v1-settings-block', {
         };
         if (typeof vkBridge === 'undefined') {
           loadScript('https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js', () => {
-            // Запуск функции старт основного скрипта
-            funStart();
             console.log('VK Bridge loaded!');
           });
         }
@@ -928,14 +926,10 @@ editor.Components.addType('senler_btn_v1-settings-block', {
           });
         }
         
-        function funStart() {
-          loadScript('https://mackorlab.github.io/Green_Build/js%20/senler_btn_v1.js', () => {
-        initBlock();
-        console.log('Custom script loaded!');
-      });
-}
-
-
+        loadScript('https://mackorlab.github.io/Green_Build/js%20/senler_btn_v1.js', () => {
+          initBlock();
+          console.log('Custom script loaded!');
+        });
       },
       'script-props': ['w_url', 'vk_grup', 's_grup', 'red_on', 'on_url', 'ups', 'clarity_on', 'clarity_id', 'clarity_ses', 'clarity_tar', 'funnel', 'clarity_ev'],
       traits: [
@@ -1023,6 +1017,164 @@ editor.Blocks.add('senler_form_btn_v1-settings-block-block', {
   category: 'ВК - Сенлер', // Добавляем категорию "Сенлер - ВК"
 });
 
+
+
+
+
+
+
+
+
+// Сенлера КНОПКА с ВК-ИД
+editor.Components.addType('senler_btn_v1-settings-block', {
+  model: {
+    defaults: {
+      content: '<div id="set_senler_btn_1"></div>',
+      script: function(props) {
+        window.w_url = props.w_url;
+        window.time_out = props.time_out;        
+        window.vk_grup = props.vk_grup;
+        window.s_grup = props.s_grup;
+        window.red_on = props.red_on;        
+        window.on_url = props.on_url;
+        window.ups = props.ups;        
+        window.clarity_on = props.clarity_on; 
+        window.clarity_id = props.clarity_id;         
+        window.clarity_ses = props.clarity_ses;
+        window.clarity_tar = props.clarity_tar;
+        window.funnel = props.funnel; 
+        window.clarity_ev = props.clarity_ev; 
+        window.startfun_on = props.startfun_on; 
+        window.startfun_name = props.startfun_name;            
+        const initBlock = () => {
+           console.log('18CoastCustoms');
+           console.log('GB_page_look'); 
+        };
+        const loadScript = (src, callback) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.onload = callback;
+          document.body.appendChild(script);
+        };
+        if (typeof vkBridge === 'undefined') {
+          loadScript('https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js', () => {
+            console.log('VK Bridge loaded!');
+          });
+        }
+        if (typeof $ === 'undefined') {
+          loadScript('https://code.jquery.com/jquery-3.6.0.min.js', () => {
+            console.log('jquery loaded!');
+          });
+        }
+        
+        loadScript('https://mackorlab.github.io/Green_Build/js%20/senler_btn_v1.js', () => {
+          initBlock();
+          console.log('Custom script loaded!');
+        });
+      },
+      'script-props': ['w_url', 'time_out', 'vk_grup', 's_grup', 'red_on', 'on_url', 'ups', 'clarity_on', 'clarity_id', 'clarity_ses', 'clarity_tar', 'funnel', 'clarity_ev', 'startfun_on', 'startfun_name'],
+      traits: [
+        {
+          type: 'text',
+          name: 'w_url',
+          label: 'W_URL',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'time_out',
+          label: 'Time_Out',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'vk_grup',
+          label: 'VK_GRUP',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 's_grup',
+          label: 'S_GRUP',
+          changeProp: true
+        },
+        {
+          type: 'checkbox', // Изменено на checkbox
+          name: 'red_on',
+          label: 'Redirect + User_ID',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'on_url',
+          label: 'Redirect-URL',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'ups',
+          label: 'Parameter UPS',
+          changeProp: true
+        },
+        {
+          type: 'checkbox', // Изменено на checkbox
+          name: 'clarity_on',
+          label: 'Clarity Analytics',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'clarity_id',
+          label: 'Script Key',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'clarity_ses',
+          label: 'Session Name',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'clarity_tar',
+          label: 'Page Name',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'funnel',
+          label: 'Funnel Stage',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'clarity_ev',
+          label: 'Button Event',
+          changeProp: true
+        },
+        {
+          type: 'checkbox', // Изменено на checkbox
+          name: 'startfun_on',
+          label: 'Function Start',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'startfun_name',
+          label: 'Function Name',
+          changeProp: true
+        }
+      ]
+    }
+  }
+});
+editor.Blocks.add('senler_form_btn_v1-settings-block-block', {
+  label: `
+    <img src="https://senler.ru/web/images/marketing-1.png" width="64" height="36" alt="senler_form_v">
+    Button_v1`,
+  content: { type: 'senler_btn_v1-settings-block' },
+  category: 'ВК - Сенлер', // Добавляем категорию "Сенлер - ВК"
+});
 
 
 
