@@ -1065,7 +1065,7 @@ editor.Components.addType('senler_btn_v1-settings-block', {
           });
         }
         
-        loadScript('https://cdn.jsdelivr.net/gh/MackorLab/Green_Build@main/js%20/senler_btn_v1.js', () => {
+        loadScript('https://mackorlab.github.io/Green_Build/js%20/senler_btn_v1.js', () => {
           initBlock();
           console.log('Custom script loaded!');
         });
