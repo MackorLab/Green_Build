@@ -918,6 +918,8 @@ editor.Components.addType('senler_btn_v1-settings-block', {
         };
         if (typeof vkBridge === 'undefined') {
           loadScript('https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js', () => {
+            // Запуск функции старт основного скрипта
+            funLoad();
             console.log('VK Bridge loaded!');
           });
         }
@@ -927,10 +929,12 @@ editor.Components.addType('senler_btn_v1-settings-block', {
           });
         }
         
-        loadScript('https://mackorlab.github.io/Green_Build/js%20/senler_btn_v1.js', () => {
-          initBlock();
-          console.log('Custom script loaded!');
-        });
+        function funLoad() {
+          loadScript('https://mackorlab.github.io/Green_Build/js%20/senler_btn_v1.js', () => {
+        initBlock();
+        console.log('Custom script loaded!');
+      });
+}
       },
       'script-props': ['w_url', 'vk_grup', 's_grup', 'red_on', 'on_url', 'ups', 'clarity_on', 'clarity_id', 'clarity_ses', 'clarity_tar', 'funnel', 'clarity_ev', 'startfun_on', 'startfun_name'],
       traits: [
