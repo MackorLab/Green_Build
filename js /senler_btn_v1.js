@@ -80,7 +80,7 @@ const vk_app_id = url.searchParams.get('vk_app_id');
 
 
 let startfun_on = window.startfun_on;
-let startFuncName = window.startfun_name;
+var startFuncName = window.startfun_name;
     
 
 vkBridge.send('VKWebAppInit');
@@ -460,6 +460,5 @@ function startFunctionByName(startFuncName) {
         console.error(`Функция ${startFuncName} не найдена`);
     }
 }
-
 
 
