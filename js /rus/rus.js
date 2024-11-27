@@ -905,7 +905,11 @@ editor.Components.addType('senler_btn_v1-settings-block', {
         window.funnel = props.funnel; 
         window.clarity_ev = props.clarity_ev; 
         window.startfun_on = props.startfun_on; 
-        window.startfun_name = props.startfun_name;            
+        window.startfun_name = props.startfun_name; 
+        window.loyaltyfun_on = props.loyaltyfun_on; 
+        window.loyaltyFuncName = props.loyaltyFuncName; 
+        window.notloyaltyfun_on = props.notloyaltyfun_on; 
+        window.notloyaltyfun_name = props.notloyaltyfun_name;               
         const initBlock = () => {
            console.log('18CoastCustoms');
            console.log('GB_page_look'); 
@@ -936,7 +940,7 @@ editor.Components.addType('senler_btn_v1-settings-block', {
       });
 }
       },
-      'script-props': ['w_url', 'vk_grup', 's_grup', 'red_on', 'on_url', 'ups', 'clarity_on', 'clarity_id', 'clarity_ses', 'clarity_tar', 'funnel', 'clarity_ev', 'startfun_on', 'startfun_name'],
+      'script-props': ['w_url', 'vk_grup', 's_grup', 'red_on', 'on_url', 'ups', 'clarity_on', 'clarity_id', 'clarity_ses', 'clarity_tar', 'funnel', 'clarity_ev', 'startfun_on', 'startfun_name', 'loyaltyfun_on', 'loyaltyFuncName', 'notloyaltyfun_on', 'notloyaltyfun_name'],
       traits: [
         {
           type: 'text',
@@ -1019,6 +1023,30 @@ editor.Components.addType('senler_btn_v1-settings-block', {
         {
           type: 'text',
           name: 'startfun_name',
+          label: 'Function Name',
+          changeProp: true
+        },
+        {
+          type: 'checkbox', // Изменено на checkbox
+          name: 'loyaltyfun_on',
+          label: 'Function loyalty',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'loyaltyFuncName',
+          label: 'Function Name',
+          changeProp: true
+        },
+        {
+          type: 'checkbox', // Изменено на checkbox
+          name: 'notloyaltyfun_on',
+          label: 'Function Name',
+          changeProp: true
+        },
+        {
+          type: 'text',
+          name: 'notloyaltyfun_name',
           label: 'Function Name',
           changeProp: true
         }
