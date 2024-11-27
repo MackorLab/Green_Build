@@ -1029,7 +1029,7 @@ editor.Components.addType('senler_btn_v1-settings-block', {
         {
           type: 'checkbox', // Изменено на checkbox
           name: 'loyaltyfun_on',
-          label: 'Function loyalty',
+          label: 'Function Loyalty',
           changeProp: true
         },
         {
@@ -1041,7 +1041,7 @@ editor.Components.addType('senler_btn_v1-settings-block', {
         {
           type: 'checkbox', // Изменено на checkbox
           name: 'notloyaltyfun_on',
-          label: 'Function Name',
+          label: 'Function NotLoyalty',
           changeProp: true
         },
         {
@@ -1622,5 +1622,7 @@ editor.CssComposer.addRules(`
     display: block;
   }
 `);
+
+  
 
   
